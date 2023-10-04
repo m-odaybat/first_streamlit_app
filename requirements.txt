@@ -1,3 +1,5 @@
 #requirements.txt
 snowflake-connector-python
-urllib3<1.27,>=1.21.1
+#urllib3<1.27,>=1.21.1 #did not work
+
+streamlit==1.25.0 
