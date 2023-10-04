@@ -36,7 +36,7 @@ except URLError as e:
 
 
 def get_fruity_vice_data(this_fruit_choice):
-  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + this_fruit_choice)
   #takes the json version of the response and normalizes it
   fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
   return  streamlit.dataframe(fruityvice_normalized) #outputs the normalized data as a table on the screen
