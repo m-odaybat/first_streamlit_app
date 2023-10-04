@@ -29,7 +29,9 @@ try:
     streamlit.error("Please select a fruit to get information.")
   else:
     streamlit.write("The user entered", fruit_choice)
-    get_fruity_vice_data(fruit_choice)
+    from_func = get_fruity_vice_data(fruit_choice)
+    #outputs the normalized data as a table on the screen
+    streamlit.dataframe(from_func)
 
 except URLError as e:
   streamlit.error()
@@ -39,7 +41,7 @@ def get_fruity_vice_data(this_fruit_choice):
   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + this_fruit_choice)
   #takes the json version of the response and normalizes it
   fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-  return  streamlit.dataframe(fruityvice_normalized) #outputs the normalized data as a table on the screen
+  return  fruityvice_normalized 
   
 streamlit.stop()
 # snowflake connector part
